@@ -1,0 +1,38 @@
+{
+  "name": "Test1 Development",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.dotnet-interactive-vscode",
+        "ms-vscode.vscode-docker",
+        "GitHub.copilot",
+        "eamodio.gitlens",
+        "humao.rest-client",
+        "ms-vscode.PowerShell",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "dotnet.defaultSolution": "agent/Agent.csproj",
+        "omnisharp.enableEditorConfigSupport": true,
+        "omnisharp.enableRoslynAnalyzers": true,
+        "files.exclude": {
+          "**/bin": true,
+          "**/obj": true
+        }
+      }
+    }
+  },
+  "forwardPorts": [
+    5000,
+    5001,
+    8080
+  ],
+  "postCreateCommand": "cd agent && dotnet restore && dotnet build",
+  "remoteUser": "vscode"
+}
