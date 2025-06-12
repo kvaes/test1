@@ -41,5 +41,6 @@ public class Program
                 services.AddSingleton(kernel);
                 services.AddScoped<IAgentService, AgentService>();
                 services.AddScoped<IBicsApiService, BicsApiService>();
+                services.AddHttpClient<BicsApiService>();
             });
 }

@@ -13,10 +13,10 @@ public class BicsApiService : IBicsApiService
     private readonly ILogger<BicsApiService> _logger;
     private readonly HttpClient _httpClient;
 
-    public BicsApiService(ILogger<BicsApiService> logger)
+    public BicsApiService(ILogger<BicsApiService> logger, HttpClient httpClient)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _httpClient = new HttpClient();
+        _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
     }
 
     public async Task InitializeAsync()
@@ -57,7 +57,7 @@ public class BicsApiService : IBicsApiService
 
     public void Dispose()
     {
-        _httpClient?.Dispose();
+        // HttpClient is managed by dependency injection, no need to dispose
     }
 }
 
